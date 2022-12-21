@@ -4,7 +4,7 @@ const finishBtn = document.getElementById("finishBtn");
 const content = document.getElementById("content");
 const text = document.getElementById("text");
 const bullets = [...document.querySelectorAll(".bullet")];
-
+const counter = document.getElementById("counter");
 const MAX_STEPS = 3;
 let currentStep = 1;
 
@@ -41,7 +41,8 @@ finishBtn.addEventListener("click", () => {
 //function to change the text depending on the step
 function textEdit() {
   if (currentStep === 2) {
-    quizzText();
+    // Call the function to start showing the questions
+    showQuestions();
   } else if (currentStep === 3) {
     resultText();
   } else if (currentStep === 1) {
@@ -58,44 +59,7 @@ function informationText(){
   application is a great way to learn more about the platform and improve your knowledge of its capabilities. <br>So why wait? Click on Next to start learning and testing your AWS knowledge today!</p>`;
   
 }
-function quizzText(){
-    text.innerHTML = "";
-    for (let i = 0; i < questions.length; i++) {
-       text.innerHTML += `<section class="d-flex flex-wrap justify-content-center">
-  <div class="card m-2" style="width: 40rem;">
-      <div class="card-body">
-           <h5> ${questions[i]["question"]}</h5>
-          <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-              <label class="form-check-label" for="flexRadioDefault1">
-              ${questions[i]["choiceA"]} 
-              </label>
-          </div>
-          <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-              <label class="form-check-label" for="flexRadioDefault1">
-              ${questions[i]["choiceB"]}
-              </label>
-          </div>
-          <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-              <label class="form-check-label" for="flexRadioDefault1">
-              ${questions[i]["choiceC"]}
-              </label>
-          </div>
-          <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-              <label class="form-check-label" for="flexRadioDefault1">
-              ${questions[i]["choiceD"]}  
-              </label>
-          </div>
-      </div>
-  </div>
-</section>`; 
-      }
-  
-  
-}
+
 function resultText(){
   text.innerText = `Congratulations on completing the AWS Quiz!
 
@@ -107,4 +71,65 @@ function resultText(){
   
   Whether you're an experienced AWS user or just starting out, the AWS Quiz application is a valuable resource for improving your knowledge and skills. So why wait? Start learning and testing your AWS knowledge today!`;
 }
+function showQuestions() {
+  
+  // Get a random question from the array
+  const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+
+  // Display the question and choices on the screen
+  text.innerHTML = `<section class="d-flex flex-wrap justify-content-center">
+  <div class="card m-2" style="width: 40rem;">
+      <div class="card-body">
+           <h5> ${randomQuestion.question}</h5>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+              ${randomQuestion.choiceA} 
+              </label>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+              ${randomQuestion.choiceB}
+              </label>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+              ${randomQuestion.choiceC}
+              </label>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+              ${randomQuestion.choiceD} 
+              </label>
+          </div>
+      </div>
+  </div>
+  </section>`; 
+  // Set a timeout to show a new question after 30 seconds
+  setTimeout(showQuestions, 30000);
+  countdown();
+}
+
+//COUNTER
+let count = 30;
+
+function countdown() {
+  // Decrement the count by 1
+  count--;
+  // Update the count on the screen
+  counter.innerHTML = `Time remaining: ${count} seconds`;
+  
+  // If the count is not yet 0, set a timeout to call the countdown function again after 1 second
+  if (count > 0) {
+    setTimeout(countdown, 1000);
+  }else {
+    count = 30;
+  }
+}
+
+
+
 
