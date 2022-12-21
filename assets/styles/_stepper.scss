@@ -13,16 +13,16 @@ text-align:  center;
 
 .step-text  {
 margin-bottom:  10px;
-color:  #28a745;
+color:  $orangeRed;
 }
 
 
 .bullet {
-	border: 1px solid #28a745;
+	border: 1px solid $orangeRed;
 	height: 20px;
 	width: 20px;
 	border-radius: 100%;
-	color: #28a745;
+	color: $orangeRed;
 	display: inline-block;
 	position: relative;
 	transition: background-color 500ms;
@@ -32,7 +32,7 @@ color:  #28a745;
 
 .bullet.completed  {
 	color:  white;
-	background-color:  #28a745;
+	background-color:  $darkOrange;
 }
 
 
@@ -44,7 +44,7 @@ color:  #28a745;
 	bottom: 10px;
 	height: 1px;
 	width: 100px;
-	background-color: #28a745;
+	background-color: $darkOrange;
 }
 
 /* Base styles and helper stuff */

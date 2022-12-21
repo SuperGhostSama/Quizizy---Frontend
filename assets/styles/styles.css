@@ -81,15 +81,15 @@
 
 .step-text {
   margin-bottom: 10px;
-  color: #28a745;
+  color: #b33a3c;
 }
 
 .bullet {
-  border: 1px solid #28a745;
+  border: 1px solid #b33a3c;
   height: 20px;
   width: 20px;
   border-radius: 100%;
-  color: #28a745;
+  color: #b33a3c;
   display: inline-block;
   position: relative;
   transition: background-color 500ms;
@@ -98,7 +98,7 @@
 
 .bullet.completed {
   color: white;
-  background-color: #28a745;
+  background-color: #cc7f1b;
 }
 
 .bullet.completed::after {
@@ -108,7 +108,7 @@
   bottom: 10px;
   height: 1px;
   width: 100px;
-  background-color: #28a745;
+  background-color: #cc7f1b;
 }
 
 /* Base styles and helper stuff */

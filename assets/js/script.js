@@ -78,7 +78,7 @@ function showQuestions() {
 
   // Display the question and choices on the screen
   text.innerHTML = `<section class="d-flex flex-wrap justify-content-center">
-  <div class="card m-2" style="width: 40rem;">
+  <div class="card m-2" >
       <div class="card-body">
            <h5> ${randomQuestion.question}</h5>
           <div class="form-check">
