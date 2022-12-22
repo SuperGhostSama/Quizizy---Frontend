@@ -44,8 +44,18 @@ function textEdit() {
   if (currentStep === 2) {
     // Call the function to start showing the questions
     showQuestions();
+    // document.getElementById("previousBtn").style.display = "none";
+    // document.getElementById("nextBtn").style.display = "none";
+    // document.getElementById("finishBtn").style.display = "none";
+    // document.getElementById("submitBtn").style.display = "block";
   } else if (currentStep === 3) {
     resultText();
+    // document.getElementById("previousBtn").style.display = "none";
+    // document.getElementById("finishBtn").style.display = "block";
+    // document.getElementById("nextBtn").style.display = "none";
+    // document.getElementById("submitBtn").style.display = "none";
+
+
   } else if (currentStep === 1) {
     informationText();
   }
@@ -111,7 +121,7 @@ function showQuestions() {
  
   if(i<questionsCopy.length-1 ){
     i++;
-    setTimeout(showQuestions, 5000);
+    setTimeout(showQuestions, 30000);
     // Set a timeout to show a new question after 30 seconds
     countdown();
   }else{
@@ -121,18 +131,17 @@ function showQuestions() {
 }
 
 //COUNTER
-let count = 5;
-function countdown() {
-  // Decrement the count by 1
-  
+let count = 30;
+function countdown() { 
   // Update the count on the screen
   counter.innerHTML = `Time remaining: ${count} seconds`;
+   // Decrement the count by 1
   count--;
   // If the count is not yet 0, set a timeout to call the countdown function again after 1 second
   if (count > 0) {
     setTimeout(countdown, 1000);
   }else {
-    count = 5;
+    count = 30;
   }
 }
 
