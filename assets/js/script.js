@@ -1,11 +1,17 @@
-const nextBtn = document.getElementById("nextBtn");
-const finishBtn = document.getElementById("finishBtn");
-const content = document.getElementById("content");
-const text = document.getElementById("text");
-const bullets = [...document.querySelectorAll(".bullet")];
-const counter = document.getElementById("counter");
-const MAX_STEPS = 3;
+let nextBtn = document.getElementById("nextBtn");
+let submitBtn = document.getElementById("submitBtn");
+let finishBtn = document.getElementById("finishBtn");
+let content = document.getElementById("content");
+let text = document.getElementById("text");
+let bullets = [...document.querySelectorAll(".bullet")];
+let counter = document.getElementById("counter");
+let MAX_STEPS = 3;
 let currentStep = 1;
+
+let radioA = document.getElementById('radioA');
+let radioB = document.getElementById('radioB');
+let radioC = document.getElementById('radioC');
+let radioD = document.getElementById('radioD');
 
 
 nextBtn.addEventListener("click", () => {
@@ -21,11 +27,19 @@ nextBtn.addEventListener("click", () => {
   textEdit();
 });
 
-
-
 finishBtn.addEventListener("click", () => {
   location.reload();
 });
+
+submitBtn.addEventListener("click", () => {
+  
+
+});
+
+// radioA.addEventListener('change', checkQuestion(A));
+// radioB.addEventListener('change', checkQuestion(B));
+// radioC.addEventListener('change', checkQuestion(C));
+// radioD.addEventListener('change', checkQuestion(D));
 
 //function to change the text depending on the step
 function textEdit() {
@@ -70,33 +84,33 @@ function resultText(){
 }
 
 let i =0;
-function showQuestions() {
+function showQuestions(){
   // Display the question and choices on the screen
-  
+  console.log(questionsCopy[i].correct);
   text.innerHTML = `<section class="d-flex flex-wrap justify-content-center">
   <div class="card m-2" >
       <div class="card-body">
            <h5> ${questionsCopy[i]["question"]}</h5>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioA">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioA" value="A">
               <label class="form-check-label" for="flexRadioDefault1">
               ${questionsCopy[i]["choiceA"]}
               </label>
           </div>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioB">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioB" value="B">
               <label class="form-check-label" for="flexRadioDefault1">
               ${questionsCopy[i]["choiceB"]}
               </label>
           </div>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioC">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioC" value="C">
               <label class="form-check-label" for="flexRadioDefault1">
               ${questionsCopy[i]["choiceC"]}
               </label>
           </div>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioD">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioD" value="D">
               <label class="form-check-label" for="flexRadioDefault1">
               ${questionsCopy[i]["choiceD"]} 
               </label>
@@ -107,17 +121,18 @@ function showQuestions() {
  
   if(i<questionsCopy.length-1 ){
     i++;
-    setTimeout(showQuestions, 30000);
+    setTimeout(showQuestions, 5000);
     // Set a timeout to show a new question after 30 seconds
     countdown();
+    
   }else{
-
+    //i need to add the condition that sends the user to the result
   }
   
 }
 
 //COUNTER
-let count = 30;
+let count = 5;
 function countdown() { 
   // Update the count on the screen
   counter.innerHTML = `Time remaining: ${count} seconds`;
@@ -127,7 +142,7 @@ function countdown() {
   if (count > 0) {
     setTimeout(countdown, 1000);
   }else {
-    count = 30;
+    count = 5;
   }
 }
 
@@ -138,8 +153,16 @@ function shuffle(questionsCopy) {
   }
 }
 
+// let score = 0;
+// let isCorrect;
+// function checkQuestion(answer){
+//   // if(answer == questionsCopy[i].correct)
+//   // {
+
+//   // }
 
 
+// }
 
 
 
