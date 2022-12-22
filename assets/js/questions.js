@@ -81,3 +81,10 @@ let questions = [
       correct: "D",
     },
 ];
+//Making a copy of the array and shuffling it
+const questionsCopy = questions.slice();
+shuffle(questionsCopy);//randomising the array
+
+console.log(questionsCopy);
+
+//////////////

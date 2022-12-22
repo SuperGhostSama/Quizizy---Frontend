@@ -8,6 +8,7 @@ const counter = document.getElementById("counter");
 const MAX_STEPS = 3;
 let currentStep = 1;
 
+
 nextBtn.addEventListener("click", () => {
   bullets[currentStep - 1].classList.add("completed");
   currentStep += 1;
@@ -71,64 +72,78 @@ function resultText(){
   
   Whether you're an experienced AWS user or just starting out, the AWS Quiz application is a valuable resource for improving your knowledge and skills. So why wait? Start learning and testing your AWS knowledge today!`;
 }
-function showQuestions() {
-  
-  // Get a random question from the array
-  const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
 
+let i =0;
+function showQuestions() {
   // Display the question and choices on the screen
+  
   text.innerHTML = `<section class="d-flex flex-wrap justify-content-center">
   <div class="card m-2" >
       <div class="card-body">
-           <h5> ${randomQuestion.question}</h5>
+           <h5> ${questionsCopy[i]["question"]}</h5>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioA">
               <label class="form-check-label" for="flexRadioDefault1">
-              ${randomQuestion.choiceA} 
+              ${questionsCopy[i]["choiceA"]}
               </label>
           </div>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioB">
               <label class="form-check-label" for="flexRadioDefault1">
-              ${randomQuestion.choiceB}
+              ${questionsCopy[i]["choiceB"]}
               </label>
           </div>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioC">
               <label class="form-check-label" for="flexRadioDefault1">
-              ${randomQuestion.choiceC}
+              ${questionsCopy[i]["choiceC"]}
               </label>
           </div>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioD">
               <label class="form-check-label" for="flexRadioDefault1">
-              ${randomQuestion.choiceD} 
+              ${questionsCopy[i]["choiceD"]} 
               </label>
           </div>
       </div>
   </div>
   </section>`; 
-  // Set a timeout to show a new question after 30 seconds
-  setTimeout(showQuestions, 30000);
-  countdown();
+ 
+  if(i<questionsCopy.length-1 ){
+    i++;
+    setTimeout(showQuestions, 5000);
+    // Set a timeout to show a new question after 30 seconds
+    countdown();
+  }else{
+
+  }
+  
 }
 
 //COUNTER
-let count = 30;
-
+let count = 5;
 function countdown() {
   // Decrement the count by 1
-  count--;
+  
   // Update the count on the screen
   counter.innerHTML = `Time remaining: ${count} seconds`;
-  
+  count--;
   // If the count is not yet 0, set a timeout to call the countdown function again after 1 second
   if (count > 0) {
     setTimeout(countdown, 1000);
   }else {
-    count = 30;
+    count = 5;
   }
 }
+
+function shuffle(questionsCopy) {
+  for (let i = questionsCopy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [questionsCopy[i], questionsCopy[j]] = [questionsCopy[j], questionsCopy[i]];
+  }
+}
+
+
 
 
 

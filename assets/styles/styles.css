@@ -66,6 +66,7 @@
   transition: all 0.3s ease;
 }
 
+/* Base styles and helper stuff */
 #stepProgressBar {
   display: flex;
   justify-content: space-between;
@@ -100,7 +101,6 @@
   color: white;
   background-color: #cc7f1b;
 }
-
 .bullet.completed::after {
   content: "";
   position: absolute;
@@ -111,7 +111,6 @@
   background-color: #cc7f1b;
 }
 
-/* Base styles and helper stuff */
 .hidden {
   display: none;
 }
@@ -121,13 +120,11 @@ button {
   border: 1px solid black;
   transition: 250ms background-color;
 }
-
 button:hover {
   cursor: pointer;
   background-color: black;
   color: white;
 }
-
 button:disabled:hover {
   opacity: 0.6;
   cursor: not-allowed;
