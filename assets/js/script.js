@@ -1,4 +1,3 @@
-const previousBtn = document.getElementById("previousBtn");
 const nextBtn = document.getElementById("nextBtn");
 const finishBtn = document.getElementById("finishBtn");
 const content = document.getElementById("content");
@@ -12,7 +11,7 @@ let currentStep = 1;
 nextBtn.addEventListener("click", () => {
   bullets[currentStep - 1].classList.add("completed");
   currentStep += 1;
-  previousBtn.disabled = false;
+ 
   if (currentStep === MAX_STEPS) {
     nextBtn.disabled = true;
     finishBtn.disabled = false;
@@ -22,18 +21,7 @@ nextBtn.addEventListener("click", () => {
   textEdit();
 });
 
-previousBtn.addEventListener("click", () => {
-  bullets[currentStep - 2].classList.remove("completed");
-  currentStep -= 1;
-  nextBtn.disabled = false;
-  finishBtn.disabled = true;
-  if (currentStep === 1) {
-    previousBtn.disabled = true;
-  }
-  content.innerText = `Step Number ${currentStep}`;
 
-  textEdit();
-});
 
 finishBtn.addEventListener("click", () => {
   location.reload();
@@ -44,16 +32,14 @@ function textEdit() {
   if (currentStep === 2) {
     // Call the function to start showing the questions
     showQuestions();
-    // document.getElementById("previousBtn").style.display = "none";
-    // document.getElementById("nextBtn").style.display = "none";
-    // document.getElementById("finishBtn").style.display = "none";
-    // document.getElementById("submitBtn").style.display = "block";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("finishBtn").style.display = "none";
+    document.getElementById("submitBtn").style.display = "block";
   } else if (currentStep === 3) {
     resultText();
-    // document.getElementById("previousBtn").style.display = "none";
-    // document.getElementById("finishBtn").style.display = "block";
-    // document.getElementById("nextBtn").style.display = "none";
-    // document.getElementById("submitBtn").style.display = "none";
+    document.getElementById("finishBtn").style.display = "block";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("submitBtn").style.display = "none";
 
 
   } else if (currentStep === 1) {
