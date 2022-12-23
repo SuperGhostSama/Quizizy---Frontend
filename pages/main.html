@@ -28,6 +28,11 @@
           <div class="bullet">3</div>
         </div>
       </div>
+
+      <div class="progress" id="progressBar">
+        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-label="Example with label" >Your Progress</div>
+      </div>
+
       <div class="d-flex flex-column align-items-center" id="main">
         <h2 id="counter"></h2>
         <p id="content" class="text-center">Step Number 1</p>
@@ -43,6 +48,7 @@
           <button class="btn btn-success" id="submitBtn">Submit</button>
         </div>
       </div>
+      
     </div>
 
   </body>
@@ -53,6 +59,7 @@
   <script>
     document.getElementById("finishBtn").style.display = "none";
     document.getElementById("submitBtn").style.display = "none";
+    document.getElementById("progressBar").style.display = "none";
   </script>
   
 </html>
