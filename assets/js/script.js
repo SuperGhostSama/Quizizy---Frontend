@@ -28,11 +28,15 @@ nextBtn.addEventListener("click", () => {
 finishBtn.addEventListener("click", () => {
   location.reload();
 });
-
 submitBtn.addEventListener("click", () => {
-  
+  count=5;
+  clearTimeout(countdownn);
+  checkRadio();
+  clearTimeout(show);
+  showQuestions();
 
 });
+
 
 
 
@@ -79,46 +83,46 @@ function resultText(){
 }
 
 let i=0;
-let score=0;
-let isCorrect;
+let show;
 function showQuestions(){
   text.innerHTML = `<section class="d-flex flex-wrap justify-content-center">
   <div class="card m-2" >
       <div class="card-body">
            <h5> ${questionsCopy[i]["question"]}</h5>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio" id="radioA" value="A">
+              <input class="form-check-input" type="radio" name="radio" id="radioA" value="A" >
               <label class="form-check-label" for="radioA">
               ${questionsCopy[i]["choiceA"]}
               </label>
           </div>
           <div class="form-check">
               <input class="form-check-input" type="radio" name="radio" id="radioB" value="B">
-              <label class="form-check-label" for="radioB">
+              <label class="form-check-label" for="radioB" >
               ${questionsCopy[i]["choiceB"]}
               </label>
           </div>
           <div class="form-check">
               <input class="form-check-input" type="radio" name="radio" id="radioC" value="C">
-              <label class="form-check-label" for="radioC">
+              <label class="form-check-label" for="radioC" >
               ${questionsCopy[i]["choiceC"]}
               </label>
           </div>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio" id="radioD" value="D">
-              <label class="form-check-label" for="radioD">
+              <input class="form-check-input" type="radio"  name="radio" id="radioD" value="D">
+              <label class="form-check-label" for="radioD" >
               ${questionsCopy[i]["choiceD"]} 
               </label>
           </div>
       </div>
   </div>
   </section>`; 
-  // console.log(questionsCopy[i].correct);
+
  
 
   if(i<questionsCopy.length-1 ){
     i++;
-    setTimeout(showQuestions, 500000);
+    
+    show=setTimeout(function(){checkRadio(); showQuestions();}, 500000);
     // Set a timeout to show a new question after 30 seconds
     countdown();
     
@@ -126,19 +130,13 @@ function showQuestions(){
     //i need to add the condition that sends the user to the result
   }
 
-    // Get the value of the checked radio button
-    let checkedRadio = document.querySelector('input[name="radio"]:checked');
-
- // Check if the checked radio button is null
- if (checkedRadio === null) {
-   console.error('No radio button is checked');
- } else {
-   let checkedValue = checkedRadio.value;}
+  
  
 }
 
 //COUNTER
 let count = 5;
+let countdownn;
 function countdown() { 
   // Update the count on the screen
   counter.innerHTML = `Time remaining: ${count} seconds`;
@@ -146,7 +144,7 @@ function countdown() {
   count--;
   // If the count is not yet 0, set a timeout to call the countdown function again after 1 second
   if (count > 0) {
-    setTimeout(countdown, 1000);
+    countdownn=setTimeout(countdown, 1000);
   }else {
     count = 5;
   }
@@ -159,21 +157,26 @@ function shuffle(questionsCopy) {
   }
 }
 
- 
-// function quizzCompare(){
-//   const checkedRadio = document.querySelector('input[name="radio"]:checked');
-//   const checkedValue = checkedRadio.value;
 
-//   let correct = 0;
+let score=0;
+function checkRadio(){
+  // Get the value of the checked radio button
+  console.log(i);
+  let checkedRadio = document.querySelector('input[name="radio"]:checked');
+ // Check if the checked radio button is null
+ if (checkedRadio === null) {
+   console.error('No radio button is checked');
+ } else {
+   let checkedValue = checkedRadio.value;
+   console.log(checkedValue);
+      if(checkedValue == questionsCopy[i-1].correct){
+        console.log("Correct");
+        score++;
+        console.log(score);
+      }else{
+        console.log("Incorrect");
+      }
+      
 
-// for (const question of questions) {
-  
-//   if (question === checkedValue) {
-//     correct++;
-//   }
-// }
-
-// console.log(`You got ${correct} out of ${questions.length} questions correct`);
-// }
-
-
+  }
+}
