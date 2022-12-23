@@ -1,37 +1,21 @@
-const previousBtn = document.getElementById("previousBtn");
-const nextBtn = document.getElementById("nextBtn");
-const finishBtn = document.getElementById("finishBtn");
-const content = document.getElementById("content");
-const bullets = [...document.querySelectorAll(".bullet")];
-
-const text = document.getElementById("text");
-
-const MAX_STEPS = 3;
+let nextBtn = document.getElementById("nextBtn");
+let submitBtn = document.getElementById("submitBtn");
+let finishBtn = document.getElementById("finishBtn");
+let content = document.getElementById("content");
+let text = document.getElementById("text");
+let bullets = [...document.querySelectorAll(".bullet")];
+let counter = document.getElementById("counter");
+let MAX_STEPS = 3;
 let currentStep = 1;
+
+
+
+
 
 nextBtn.addEventListener("click", () => {
   bullets[currentStep - 1].classList.add("completed");
   currentStep += 1;
-  previousBtn.disabled = false;
-  if (currentStep === MAX_STEPS) {
-    nextBtn.disabled = true;
-    finishBtn.disabled = false;
-  }
   content.innerText = `Step Number ${currentStep}`;
-
-  textEdit();
-});
-
-previousBtn.addEventListener("click", () => {
-  bullets[currentStep - 2].classList.remove("completed");
-  currentStep -= 1;
-  nextBtn.disabled = false;
-  finishBtn.disabled = true;
-  if (currentStep === 1) {
-    previousBtn.disabled = true;
-  }
-  content.innerText = `Step Number ${currentStep}`;
-
   textEdit();
 });
 
@@ -39,12 +23,33 @@ finishBtn.addEventListener("click", () => {
   location.reload();
 });
 
+submitBtn.addEventListener("click", () => {
+  count=5;
+  clearTimeout(countdownn);
+  checkRadio();
+  clearTimeout(show);
+  showQuestions();
+
+});
+
+
+
+
 //function to change the text depending on the step
 function textEdit() {
   if (currentStep === 2) {
-    quizzText();
+    // Call the function to start showing the questions
+    showQuestions();
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("finishBtn").style.display = "none";
+    document.getElementById("submitBtn").style.display = "block";
   } else if (currentStep === 3) {
     resultText();
+    document.getElementById("finishBtn").style.display = "block";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("submitBtn").style.display = "none";
+
+
   } else if (currentStep === 1) {
     informationText();
   }
@@ -59,9 +64,7 @@ function informationText(){
   application is a great way to learn more about the platform and improve your knowledge of its capabilities. <br>So why wait? Click on Next to start learning and testing your AWS knowledge today!</p>`;
   
 }
-function quizzText(){
-  text.innerText = `Quizzzzzzzzzzzzzzzzzzzzzzzzzzzz`;
-}
+
 function resultText(){
   text.innerText = `Congratulations on completing the AWS Quiz!
 
@@ -72,4 +75,105 @@ function resultText(){
   If you scored well on the quiz, congratulations! You have a strong foundation in AWS and are well on your way to becoming an expert. If you didn't do as well as you had hoped, don't worry. The AWS Quiz application is a great learning tool and can help you identify areas where you may need to focus your studies.
   
   Whether you're an experienced AWS user or just starting out, the AWS Quiz application is a valuable resource for improving your knowledge and skills. So why wait? Start learning and testing your AWS knowledge today!`;
+}
+
+let i=0;
+let show;
+function showQuestions(){
+  text.innerHTML = `<section class="d-flex flex-wrap justify-content-center">
+  <div class="card m-2" >
+      <div class="card-body">
+           <h5> ${questionsCopy[i]["question"]}</h5>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="radio" id="radioA" value="A" >
+              <label class="form-check-label" for="radioA">
+              ${questionsCopy[i]["choiceA"]}
+              </label>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="radio" id="radioB" value="B">
+              <label class="form-check-label" for="radioB" >
+              ${questionsCopy[i]["choiceB"]}
+              </label>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="radio" id="radioC" value="C">
+              <label class="form-check-label" for="radioC" >
+              ${questionsCopy[i]["choiceC"]}
+              </label>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="radio"  name="radio" id="radioD" value="D">
+              <label class="form-check-label" for="radioD" >
+              ${questionsCopy[i]["choiceD"]} 
+              </label>
+          </div>
+      </div>
+  </div>
+  </section>`; 
+
+  if(i<questionsCopy.length-1 ){
+    i++;
+    
+    show=setTimeout(function(){checkRadio(); showQuestions();}, 500000);
+    // Set a timeout to show a new question after 30 seconds
+    countdown();
+    
+  }else{
+    //i need to add the condition that sends the user to the result
+    bullets[currentStep - 1].classList.add("completed");
+    currentStep = 3;
+    document.getElementById("counter").style.display = "none";
+    textEdit();
+  }
+
+  
+ 
+}
+
+//COUNTER
+let count = 5;
+let countdownn;
+function countdown() { 
+  // Update the count on the screen
+  counter.innerHTML = `Time remaining: ${count} seconds`;
+   // Decrement the count by 1
+  count--;
+  // If the count is not yet 0, set a timeout to call the countdown function again after 1 second
+  if (count > 0) {
+    countdownn=setTimeout(countdown, 1000);
+  }else {
+    count = 5;
+  }
+}
+
+function shuffle(questionsCopy) {
+  for (let i = questionsCopy.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [questionsCopy[i], questionsCopy[j]] = [questionsCopy[j], questionsCopy[i]];
+  }
+}
+
+
+let score=0;
+function checkRadio(){
+  // Get the value of the checked radio button
+  console.log(i);
+  let checkedRadio = document.querySelector('input[name="radio"]:checked');
+ // Check if the checked radio button is null
+ if (checkedRadio === null) {
+   console.error('No radio button is checked');
+ } else {
+   let checkedValue = checkedRadio.value;
+   console.log(checkedValue);
+      if(checkedValue == questionsCopy[i-1].correct){
+        console.log("Correct");
+        score++;
+        console.log(score);
+      }else{
+        console.log("Incorrect");
+      }
+      
+
+  }
 }
