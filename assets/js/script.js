@@ -68,15 +68,8 @@ function informationText(){
 }
 
 function resultText(){
-  text.innerText = `Congratulations on completing the AWS Quiz!
-
-  You have just finished testing your knowledge of Amazon Web Services (AWS), a cloud computing platform offered by Amazon.com. The quiz included a series of multiple choice questions designed to challenge your understanding of AWS concepts and features.
-  
-  Now, it's time to see how you did. The AWS Quiz application will provide you with a detailed breakdown of your results, including the number of correct answers, the percentage of correct answers, and the areas where you may need to improve.
-  
-  If you scored well on the quiz, congratulations! You have a strong foundation in AWS and are well on your way to becoming an expert. If you didn't do as well as you had hoped, don't worry. The AWS Quiz application is a great learning tool and can help you identify areas where you may need to focus your studies.
-  
-  Whether you're an experienced AWS user or just starting out, the AWS Quiz application is a valuable resource for improving your knowledge and skills. So why wait? Start learning and testing your AWS knowledge today!`;
+  text.innerHTML = `<h3 class="text-center" style="margin: 0;" ><p>Congratulations on completing the AWS Quiz!</h3> 
+  <br><h3 class="text-center" >Your Result is ${score}/10</h3> `;
 }
 
 let i=0;
@@ -119,8 +112,10 @@ function showQuestions(){
 
     let progressBar=document.querySelector(".progress-bar");
     progressBar.style.width=(i*100/questionsCopy.length)+"%";
+    progressBar.innerText=(i*100/questionsCopy.length)+"%";
+    
 
-    show=setTimeout(function(){checkRadio(); showQuestions();}, 500000);
+    show=setTimeout(function(){checkRadio(); showQuestions();}, 5000);
     // Set a timeout to show a new question after 30 seconds
     countdown();
     
