@@ -40,11 +40,13 @@ function textEdit() {
   if (currentStep === 2) {
     // Call the function to start showing the questions
     showQuestions();
+    document.getElementById("progressBar").style.display = "block";
     document.getElementById("nextBtn").style.display = "none";
     document.getElementById("finishBtn").style.display = "none";
     document.getElementById("submitBtn").style.display = "block";
   } else if (currentStep === 3) {
     resultText();
+    document.getElementById("progressBar").style.display = "none";
     document.getElementById("finishBtn").style.display = "block";
     document.getElementById("nextBtn").style.display = "none";
     document.getElementById("submitBtn").style.display = "none";
@@ -114,7 +116,10 @@ function showQuestions(){
 
   if(i<questionsCopy.length-1 ){
     i++;
-    
+
+    let progressBar=document.querySelector(".progress-bar");
+    progressBar.style.width=(i*100/questionsCopy.length)+"%";
+
     show=setTimeout(function(){checkRadio(); showQuestions();}, 500000);
     // Set a timeout to show a new question after 30 seconds
     countdown();
@@ -158,7 +163,6 @@ function shuffle(questionsCopy) {
 let score=0;
 function checkRadio(){
   // Get the value of the checked radio button
-  console.log(i);
   let checkedRadio = document.querySelector('input[name="radio"]:checked');
  // Check if the checked radio button is null
  if (checkedRadio === null) {
