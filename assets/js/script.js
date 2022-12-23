@@ -15,7 +15,7 @@ let currentStep = 1;
 nextBtn.addEventListener("click", () => {
   bullets[currentStep - 1].classList.add("completed");
   currentStep += 1;
-  content.innerText = `Step Number ${currentStep}`;
+  // content.innerText = `Step Number ${currentStep}`;
   textEdit();
 });
 
@@ -24,7 +24,7 @@ finishBtn.addEventListener("click", () => {
 });
 
 submitBtn.addEventListener("click", () => {
-  count=5;
+  count=30;
   clearTimeout(countdownn);
   checkRadio();
   clearTimeout(show);
@@ -69,7 +69,10 @@ function informationText(){
 
 function resultText(){
   text.innerHTML = `<h3 class="text-center" style="margin: 0;" ><p>Congratulations on completing the AWS Quiz!</h3> 
-  <br><h3 class="text-center" >Your Result is ${score}/10</h3> `;
+  <br><h3 class="text-center" >Your Result is ${score}/10</h3> 
+  <br><p class="text-center" >If you are unsatisfied of your Result, Work Harder and try Again by pressing the Finish button</p> 
+  
+  `;
 }
 
 let i=0;
@@ -115,7 +118,7 @@ function showQuestions(){
     progressBar.innerText=(i*100/questionsCopy.length)+"%";
     
 
-    show=setTimeout(function(){checkRadio(); showQuestions();}, 5000);
+    show=setTimeout(function(){checkRadio(); showQuestions();}, 30000);
     // Set a timeout to show a new question after 30 seconds
     countdown();
     
@@ -132,7 +135,7 @@ function showQuestions(){
 }
 
 //COUNTER
-let count = 5;
+let count = 30;
 let countdownn;
 function countdown() { 
   // Update the count on the screen
@@ -143,7 +146,7 @@ function countdown() {
   if (count > 0) {
     countdownn=setTimeout(countdown, 1000);
   }else {
-    count = 5;
+    count = 30;
   }
 }
 

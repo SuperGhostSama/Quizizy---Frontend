@@ -86,6 +86,7 @@
 }
 
 .bullet {
+  background-color: white;
   border: 1px solid #b33a3c;
   height: 20px;
   width: 20px;
