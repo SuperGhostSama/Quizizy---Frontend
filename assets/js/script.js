@@ -15,19 +15,14 @@ let currentStep = 1;
 nextBtn.addEventListener("click", () => {
   bullets[currentStep - 1].classList.add("completed");
   currentStep += 1;
- 
-  if (currentStep === MAX_STEPS) {
-    nextBtn.disabled = true;
-    finishBtn.disabled = false;
-  }
   content.innerText = `Step Number ${currentStep}`;
-
   textEdit();
 });
 
 finishBtn.addEventListener("click", () => {
   location.reload();
 });
+
 submitBtn.addEventListener("click", () => {
   count=5;
   clearTimeout(countdownn);
@@ -117,8 +112,6 @@ function showQuestions(){
   </div>
   </section>`; 
 
- 
-
   if(i<questionsCopy.length-1 ){
     i++;
     
@@ -128,6 +121,10 @@ function showQuestions(){
     
   }else{
     //i need to add the condition that sends the user to the result
+    bullets[currentStep - 1].classList.add("completed");
+    currentStep = 3;
+    document.getElementById("counter").style.display = "none";
+    textEdit();
   }
 
   
