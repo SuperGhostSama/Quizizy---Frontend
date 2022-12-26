@@ -70,14 +70,29 @@ function informationText(){
 function resultText(){
   text.innerHTML = `<h3 class="text-center" style="margin: 0;" ><p>Congratulations on completing the AWS Quiz!</h3> 
   <br><h3 class="text-center" >Your Result is ${score}/10</h3> 
-  <br><p class="text-center" >If you are unsatisfied of your Result, Work Harder and try Again by pressing the Finish button</p> 
-  
-  `;
+  <br><p class="text-center border-bottom border-secondary-subtle" >If you are unsatisfied of your Result, Work Harder and try Again by pressing the Finish button</p>`;
+
+  for(let index=0 ; index<questionsCopy.length ; index++){
+  if(questionsCopy[index]["incorrect"]){
+    text.innerHTML +=`<section class="d-flex flex-wrap justify-content-center">
+    <div class="w-100 card m-3 border-secondary border border-3">
+        <div class="card-body text-center">
+             <h5> ${questionsCopy[index]["question"]}</h5>
+            <div class="form-check">
+                ${questionsCopy[index]["answer"]}
+                </label>
+            </div>
+        </div>
+    </div>
+    </section>`;
+  }
+}
 }
 
 let i=0;
 let show;
 function showQuestions(){
+  if(i<questionsCopy.length){
   text.innerHTML = `<section class="d-flex flex-wrap justify-content-center">
   <div class="card m-2" >
       <div class="card-body">
@@ -85,34 +100,32 @@ function showQuestions(){
           <div class="form-check">
               <input class="form-check-input" type="radio" name="radio" id="radioA" value="A" >
               <label class="form-check-label" for="radioA">
-              ${questionsCopy[i]["choiceA"]}
+              A - ${questionsCopy[i]["choiceA"]}
               </label>
           </div>
           <div class="form-check">
               <input class="form-check-input" type="radio" name="radio" id="radioB" value="B">
               <label class="form-check-label" for="radioB" >
-              ${questionsCopy[i]["choiceB"]}
+              B - ${questionsCopy[i]["choiceB"]}
               </label>
           </div>
           <div class="form-check">
               <input class="form-check-input" type="radio" name="radio" id="radioC" value="C">
               <label class="form-check-label" for="radioC" >
-              ${questionsCopy[i]["choiceC"]}
+              C - ${questionsCopy[i]["choiceC"]}
               </label>
           </div>
           <div class="form-check">
               <input class="form-check-input" type="radio"  name="radio" id="radioD" value="D">
               <label class="form-check-label" for="radioD" >
-              ${questionsCopy[i]["choiceD"]} 
+              D - ${questionsCopy[i]["choiceD"]} 
               </label>
           </div>
       </div>
   </div>
   </section>`; 
 
-  if(i<questionsCopy.length-1 ){
-    i++;
-
+    
     let progressBar=document.querySelector(".progress-bar");
     progressBar.style.width=(i*100/questionsCopy.length)+"%";
     progressBar.innerText=(i*100/questionsCopy.length)+"%";
@@ -123,15 +136,13 @@ function showQuestions(){
     countdown();
     
   }else{
-    //i need to add the condition that sends the user to the result
+    
     bullets[currentStep - 1].classList.add("completed");
     currentStep = 3;
     document.getElementById("counter").style.display = "none";
     textEdit();
   }
-
-  
- 
+  i++;
 }
 
 //COUNTER
@@ -164,16 +175,19 @@ function checkRadio(){
   let checkedRadio = document.querySelector('input[name="radio"]:checked');
  // Check if the checked radio button is null
  if (checkedRadio === null) {
-   console.error('No radio button is checked');
- } else {
+  //  console.error('No radio button is checked');
+   questionsCopy[i-1]["incorrect"]="true";
+  } else {
    let checkedValue = checkedRadio.value;
    console.log(checkedValue);
       if(checkedValue == questionsCopy[i-1].correct){
-        console.log("Correct");
+        // console.log("Correct");
         score++;
-        console.log(score);
+        // console.log(score);
       }else{
-        console.log("Incorrect");
+        // console.log("Incorrect");
+        questionsCopy[i-1]["incorrect"]="true";
+        console.log(questionsCopy);
       }
       
 
