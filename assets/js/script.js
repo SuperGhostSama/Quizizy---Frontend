@@ -75,8 +75,8 @@ function resultText(){
   for(let index=0 ; index<questionsCopy.length ; index++){
   if(questionsCopy[index]["incorrect"]){
     text.innerHTML +=`<section class="d-flex flex-wrap justify-content-center">
-    <div class="w-100 card m-3" id="correction">
-        <div class="card-body">
+    <div class="w-100 card m-3 border-secondary border border-3">
+        <div class="card-body text-center">
              <h5> ${questionsCopy[index]["question"]}</h5>
             <div class="form-check">
                 ${questionsCopy[index]["answer"]}
@@ -92,6 +92,7 @@ function resultText(){
 let i=0;
 let show;
 function showQuestions(){
+  if(i<questionsCopy.length){
   text.innerHTML = `<section class="d-flex flex-wrap justify-content-center">
   <div class="card m-2" >
       <div class="card-body">
@@ -124,9 +125,7 @@ function showQuestions(){
   </div>
   </section>`; 
 
-  if(i<questionsCopy.length-1 ){
-    i++;
-
+    
     let progressBar=document.querySelector(".progress-bar");
     progressBar.style.width=(i*100/questionsCopy.length)+"%";
     progressBar.innerText=(i*100/questionsCopy.length)+"%";
@@ -143,6 +142,7 @@ function showQuestions(){
     document.getElementById("counter").style.display = "none";
     textEdit();
   }
+  i++;
 }
 
 //COUNTER
@@ -175,17 +175,17 @@ function checkRadio(){
   let checkedRadio = document.querySelector('input[name="radio"]:checked');
  // Check if the checked radio button is null
  if (checkedRadio === null) {
-   console.error('No radio button is checked');
+  //  console.error('No radio button is checked');
    questionsCopy[i-1]["incorrect"]="true";
   } else {
    let checkedValue = checkedRadio.value;
    console.log(checkedValue);
       if(checkedValue == questionsCopy[i-1].correct){
-        console.log("Correct");
+        // console.log("Correct");
         score++;
         // console.log(score);
       }else{
-        console.log("Incorrect");
+        // console.log("Incorrect");
         questionsCopy[i-1]["incorrect"]="true";
         console.log(questionsCopy);
       }
