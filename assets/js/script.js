@@ -70,7 +70,7 @@ function informationText(){
 function resultText(){
   text.innerHTML = `<h3 class="text-center" style="margin: 0;" ><p>Congratulations on completing the AWS Quiz!</h3> 
   <br><h3 class="text-center" >Your Result is ${score}/10</h3> 
-  <br><p class="text-center border-bottom border-secondary-subtle" >If you are unsatisfied of your Result, Work Harder and try Again by pressing the Finish button</p>`;
+  <br><p class="text-center " >If you are unsatisfied of your Result, Work Harder and try Again by pressing the Finish button</p>`;
 
   for(let index=0 ; index<questionsCopy.length ; index++){
   if(questionsCopy[index]["incorrect"]){
