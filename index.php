@@ -52,7 +52,7 @@
         </div>
         <div class="hero__container--right">
           <img
-            src="/assets/img/aws_logo_smile_1200x630-removebg-preview.png"
+            src="assets/img/aws_logo_smile_1200x630-removebg-preview.png"
             alt="AWS"
             class="hero__container--img"
           />

@@ -168,7 +168,7 @@ function shuffle(questionsCopy) {
   }
 }
 
-
+let questionsCopy;
 let score=0;
 function checkRadio(){
   // Get the value of the checked radio button
@@ -193,3 +193,15 @@ function checkRadio(){
 
   }
 }
+
+//AJAX
+var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              questionsCopy=JSON.parse(this.responseText);
+            }
+        };
+        xmlhttp.open("GET", "/Quizizy---Frontend/Controllers/json.php" , false);
+        xmlhttp.send();
+        shuffle(questionsCopy);
+        console.log(questionsCopy);
