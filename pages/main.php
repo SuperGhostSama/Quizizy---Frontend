@@ -11,7 +11,7 @@
   
   </head>
 
-  <body style="background-color: #f2f2f2;">
+  <body >
     <a class="navbar__logo me-5" href="../index.html">QUIZIZY</a>
 
 

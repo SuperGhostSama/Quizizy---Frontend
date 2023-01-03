@@ -70,7 +70,9 @@ function informationText(){
 function resultText(){
   text.innerHTML = `<h3 class="text-center" style="margin: 0;" ><p>Congratulations on completing the AWS Quiz!</h3> 
   <br><h3 class="text-center" >Your Result is ${score}/10</h3> 
-  <br><p class="text-center " >If you are unsatisfied of your Result, Work Harder and try Again by pressing the Finish button</p>`;
+  <br><p class="text-center " >If you are unsatisfied of your Result, Work Harder and try Again by pressing the Finish button</p>
+  <h3 class="text-center" >Here are the incorrect questions with the explanation</h1>
+  `;
 
   for(let index=0 ; index<questionsCopy.length ; index++){
   if(questionsCopy[index]["incorrect"]){
@@ -93,29 +95,34 @@ let i=0;
 let show;
 function showQuestions(){
   if(i<questionsCopy.length){
-  text.innerHTML = `<section class="d-flex flex-wrap justify-content-center">
-  <div class="card m-2" >
-      <div class="card-body">
-           <h5> ${questionsCopy[i]["question"]}</h5>
-          <div class="form-check">
+  text.innerHTML = `<section class="d-flex  ">
+  <div class="m-2 " >
+      <div class="card-body text-center ">
+          <div class="card border border-3 " ">
+            <div class="card-body text-center">
+                <h5 class="card-title">${questionsCopy[i]["question"]}</h5>
+            </div>
+          </div>
+
+          <div class="form-check form-check-inline card border border-3 mt-4 rounded-pill">
               <input class="form-check-input" type="radio" name="radio" id="radioA" value="A" >
               <label class="form-check-label" for="radioA">
               A - ${questionsCopy[i]["choiceA"]}
               </label>
           </div>
-          <div class="form-check">
+          <div class="form-check card border border-3 mt-4 rounded-pill">
               <input class="form-check-input" type="radio" name="radio" id="radioB" value="B">
               <label class="form-check-label" for="radioB" >
               B - ${questionsCopy[i]["choiceB"]}
               </label>
           </div>
-          <div class="form-check">
+          <div class="form-check card border border-3 mt-4 rounded-pill">
               <input class="form-check-input" type="radio" name="radio" id="radioC" value="C">
               <label class="form-check-label" for="radioC" >
               C - ${questionsCopy[i]["choiceC"]}
               </label>
           </div>
-          <div class="form-check">
+          <div class="form-check card border border-3 mt-4 rounded-pill">
               <input class="form-check-input" type="radio"  name="radio" id="radioD" value="D">
               <label class="form-check-label" for="radioD" >
               D - ${questionsCopy[i]["choiceD"]} 
