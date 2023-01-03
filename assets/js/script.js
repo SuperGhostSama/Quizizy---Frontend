@@ -175,33 +175,33 @@ function shuffle(questionsCopy) {
   }
 }
 
-let questionsCopy;
 let score=0;
 function checkRadio(){
   // Get the value of the checked radio button
   let checkedRadio = document.querySelector('input[name="radio"]:checked');
- // Check if the checked radio button is null
- if (checkedRadio === null) {
-  //  console.error('No radio button is checked');
-   questionsCopy[i-1]["incorrect"]="true";
+  // Check if the checked radio button is null
+  if (checkedRadio === null) {
+    //  console.error('No radio button is checked');
+    questionsCopy[i-1]["incorrect"]="true";
   } else {
-   let checkedValue = checkedRadio.value;
-   console.log(checkedValue);
-      if(checkedValue == questionsCopy[i-1].correct){
-        // console.log("Correct");
-        score++;
-        // console.log(score);
-      }else{
-        // console.log("Incorrect");
-        questionsCopy[i-1]["incorrect"]="true";
-        console.log(questionsCopy);
-      }
-      
-
+    let checkedValue = checkedRadio.value;
+    console.log(checkedValue);
+    if(checkedValue == questionsCopy[i-1].correct){
+      // console.log("Correct");
+      score++;
+      // console.log(score);
+    }else{
+      // console.log("Incorrect");
+      questionsCopy[i-1]["incorrect"]="true";
+      console.log(questionsCopy);
+    }
+    
+    
   }
 }
 
 //AJAX
+let questionsCopy;
 var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
