@@ -104,25 +104,25 @@ function showQuestions(){
             </div>
           </div>
 
-          <div class="form-check form-check-inline card border border-3 mt-4 rounded-pill">
+          <div class="border border-3 mt-4 rounded-pill">
               <input class="form-check-input" type="radio" name="radio" id="radioA" value="A" >
               <label class="form-check-label" for="radioA">
               A - ${questionsCopy[i]["choiceA"]}
               </label>
           </div>
-          <div class="form-check card border border-3 mt-4 rounded-pill">
+          <div class="border border-3 mt-4 rounded-pill">
               <input class="form-check-input" type="radio" name="radio" id="radioB" value="B">
               <label class="form-check-label" for="radioB">
               B - ${questionsCopy[i]["choiceB"]}
               </label>
           </div>
-          <div class="form-check card border border-3 mt-4 rounded-pill">
+          <div class="border border-3 mt-4 rounded-pill">
               <input class="form-check-input" type="radio" name="radio" id="radioC" value="C">
               <label class="form-check-label" for="radioC">
               C - ${questionsCopy[i]["choiceC"]}
               </label>
           </div>
-          <div class="form-check card border border-3 mt-4 rounded-pill">
+          <div class="border border-3 mt-4 rounded-pill">
               <input class="form-check-input" type="radio"  name="radio" id="radioD" value="D">
               <label class="form-check-label" for="radioD">
               D - ${questionsCopy[i]["choiceD"]} 
@@ -138,7 +138,7 @@ function showQuestions(){
     progressBar.innerText=(i*100/questionsCopy.length)+"%";
     
 
-    show=setTimeout(function(){checkRadio(); showQuestions();}, 30000);
+    show=setTimeout(function(){checkRadio(); showQuestions();}, 3000000);
     // Set a timeout to show a new question after 30 seconds
     countdown();
     
