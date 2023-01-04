@@ -12,7 +12,7 @@
   </head>
 
   <body >
-    <a class="navbar__logo me-5" href="../index.html">QUIZIZY</a>
+    <a class="navbar__logo me-5" href="../index.php">QUIZIZY</a>
 
 
     <div class="container">

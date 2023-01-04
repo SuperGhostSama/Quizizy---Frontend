@@ -3,7 +3,7 @@ let submitBtn = document.getElementById("submitBtn");
 let finishBtn = document.getElementById("finishBtn");
 let content = document.getElementById("content");
 let text = document.getElementById("text");
-let bullets = [...document.querySelectorAll(".bullet")];
+let bullets = [...document.querySelectorAll(".bullet")]; //spread operator / with spread operator 1 2 3 / without Array [1, 2, 3]
 let counter = document.getElementById("counter");
 let MAX_STEPS = 3;
 let currentStep = 1;
@@ -95,9 +95,9 @@ let i=0;
 let show;
 function showQuestions(){
   if(i<questionsCopy.length){
-  text.innerHTML = `<section class="d-flex  ">
+  text.innerHTML = `<section class="">
   <div class="m-2 " >
-      <div class="card-body text-center ">
+      <div class="card-body  text-center">
           <div class="card border border-3 " ">
             <div class="card-body text-center">
                 <h5 class="card-title">${questionsCopy[i]["question"]}</h5>
@@ -112,19 +112,19 @@ function showQuestions(){
           </div>
           <div class="form-check card border border-3 mt-4 rounded-pill">
               <input class="form-check-input" type="radio" name="radio" id="radioB" value="B">
-              <label class="form-check-label" for="radioB" >
+              <label class="form-check-label" for="radioB">
               B - ${questionsCopy[i]["choiceB"]}
               </label>
           </div>
           <div class="form-check card border border-3 mt-4 rounded-pill">
               <input class="form-check-input" type="radio" name="radio" id="radioC" value="C">
-              <label class="form-check-label" for="radioC" >
+              <label class="form-check-label" for="radioC">
               C - ${questionsCopy[i]["choiceC"]}
               </label>
           </div>
           <div class="form-check card border border-3 mt-4 rounded-pill">
               <input class="form-check-input" type="radio"  name="radio" id="radioD" value="D">
-              <label class="form-check-label" for="radioD" >
+              <label class="form-check-label" for="radioD">
               D - ${questionsCopy[i]["choiceD"]} 
               </label>
           </div>
@@ -203,12 +203,12 @@ function checkRadio(){
 //AJAX
 let questionsCopy;
 var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              questionsCopy=JSON.parse(this.responseText);
-            }
-        };
-        xmlhttp.open("GET", "/Quizizy---Frontend/Controllers/json.php" , false);
-        xmlhttp.send();
-        shuffle(questionsCopy);
-        console.log(questionsCopy);
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      questionsCopy=JSON.parse(this.responseText);
+    }
+};
+xmlhttp.open("GET", "/Quizizy---Frontend/Controllers/json.php" , false);
+xmlhttp.send();
+shuffle(questionsCopy);
+console.log(questionsCopy);

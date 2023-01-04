@@ -16,17 +16,17 @@
           <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-light justify">
       <div class="container-fluid">
-        <a class="navbar__logo me-5" href="index.html">QUIZIZY</a>
+        <a class="navbar__logo me-5" href="index.php">QUIZIZY</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-row justify-content-around">
             <li class="nav-item">
-              <a class="nav-link active " aria-current="page" href="index.html">Home</a>
+              <a class="nav-link active " aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active " aria-current="page" href="pages/main.html">Information</a>
+              <a class="nav-link active " aria-current="page" href="pages/main.php">Information</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">About Us</a>
@@ -34,7 +34,7 @@
             
           </ul>
           <div class="navbar__menu d-flex justify-content-center" role="search">
-            <a class="navbar__menu--links" href="pages/main.html"  id="button">Start Now</a>
+            <a class="navbar__menu--links" href="pages/main.php"  id="button">Start Now</a>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@
           <h1>Are you Ready</h1>
           <h2>Be Prepared</h2>
           <p>Start now to test your skills.</p>
-          <button class="hero__container--btn"><a href="pages/main.html">Start Now</a></button>
+          <button class="hero__container--btn"><a href="pages/main.php">Start Now</a></button>
         </div>
         <div class="hero__container--right">
           <img
