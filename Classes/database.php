@@ -1,6 +1,6 @@
 <?php
 class database {
-    private static string $dbHost = "localhost";
+    private static string $dbHost = "localhost";//Static methods can be called directly - without creating an instance of the class first.
     private static string $dbName = "quizz";
     private static string $dbUsername = "root";
     private static string $dbPassword = "";

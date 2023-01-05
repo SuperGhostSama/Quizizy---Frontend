@@ -203,12 +203,13 @@ function checkRadio(){
 //AJAX
 let questionsCopy;
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      questionsCopy=JSON.parse(this.responseText);
+xmlhttp.onreadystatechange = function() {//onreadystatechange property is an event handler that is called every time the readyState changes
+    if (this.readyState == 4 && this.status == 200) {//4=request is complete / 200 = request was successful)
+      questionsCopy=JSON.parse(this.responseText);//responseText property returns the response as a string
     }
 };
-xmlhttp.open("GET", "/Quizizy---Frontend/Controllers/json.php" , false);
-xmlhttp.send();
+//open() method initializes a request. It has three parameters: the HTTP method, the URL, and a boolean indicating whether the request should be handled asynchronously or not.
+xmlhttp.open("GET", "/Quizizy---Frontend/Controllers/json.php" , false);//false = synchronously
+xmlhttp.send();//send() method sends the request to the server
 shuffle(questionsCopy);
 console.log(questionsCopy);
