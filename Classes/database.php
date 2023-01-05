@@ -9,7 +9,7 @@ class database {
 
     public static function connect()
     {
-        if (self::$connection == null) {
+        if (self::$connection == null) {  //:: is a scope résolution operator
             try {
                 self::$connection = new PDO("mysql:host=" . self::$dbHost . ";dbname=" . self::$dbName, self::$dbUsername, self::$dbPassword);
             } catch (PDOException $e) {
